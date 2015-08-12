@@ -11,7 +11,7 @@
 @interface LSMapItem : NSObject
 
 @property (nonatomic, readonly) MKCoordinateRegion boundingRegion;
-@property (nonatomic, readonly) NSMutableDictionary *searchResults;
+@property (nonatomic, readonly) NSMutableArray *searchResults;
 
 - (id)initWithSearchResults:(NSArray *)mapItems boundingRegion:(MKCoordinateRegion)region;
 - (id)copyWithZone:(NSZone *)zone;

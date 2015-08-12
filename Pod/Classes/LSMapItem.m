@@ -11,11 +11,8 @@
 @implementation LSMapItem
 
 - (id)initWithSearchResults:(NSArray *)mapItems boundingRegion:(MKCoordinateRegion)region {
-    _searchResults = [[NSMutableDictionary alloc] init];
+    _searchResults = [[NSMutableArray alloc] initWithArray:mapItems];
 
-    for (MKMapItem *mapItem in mapItems) {
-        [_searchResults setObject:mapItem forKey:mapItem.name];
-    }
     _boundingRegion = region;
     
     return self;
@@ -31,9 +28,9 @@
 - (NSString *)description {
     NSMutableString *debugDescription = [[NSMutableString alloc] initWithString:@"Search results\n"];
     
-    for (id key in [self.searchResults allKeys]) {
+    for (MKMapItem *item in self.searchResults) {
         [debugDescription appendString:@"\n"];
-        [debugDescription appendString:key];
+        [debugDescription appendString:item.name];
     }
     [debugDescription appendString:@"\n"];
 
